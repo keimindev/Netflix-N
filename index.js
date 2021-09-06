@@ -24,6 +24,12 @@ app.use("/api/users", userRoute)
 app.use("/api/movies", moviesRoute)
 app.use("/api/lists", listsRoute)
 
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
+
 
 app.use(express.json({ limit : "100mb" })); 
 app.use(express.urlencoded({ limit:"100mb", extended: false }));
