@@ -14,11 +14,12 @@ router.post("/register", async (req,res) => {
             req.body.password , 
             process.env.SECRET_KEY
             ).toString(),
+        profilePic : req.body.profilePic,
     });
     
     try{
-        const user = await newUser.save();
-        res.status(201).json(user);
+        const users = await newUser.save();
+        res.status(201).json(users);
     }catch(err){
         res.status(500).json(err);
     }

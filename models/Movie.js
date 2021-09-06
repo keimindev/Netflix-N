@@ -10,8 +10,9 @@ const MovieSchema = new mongoose.Schema( {
     trailer:{type:String},
     video:{type:String},
     year: {type:String},
-    limit: {type:Number},
+    limit: {type:String},
     genre: {type:String},
+    duration: {type:String},
     isSeries: {type:Boolean, default:false},
 },
 { timestamps: true}

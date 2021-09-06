@@ -1,0 +1,3 @@
+[submodule "Netflix-app"]
+	path = Netflix-app
+	url = https://github.com/kxxrxmxn/Netflix-app

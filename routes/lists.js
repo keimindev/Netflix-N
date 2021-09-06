@@ -27,7 +27,7 @@ router.post("/", verify, async (req,res) => {
 router.delete("/:id", verify, async (req,res) => {
     if(req.user.isAdmin){
         try{
-            await newList.findByIdAndDelete(req.params.id);
+            await List.findByIdAndDelete(req.params.id);
             res.status(201).json("The list has been delete...")
 
         }catch(err){
@@ -47,18 +47,18 @@ router.get("/", verify, async (req,res) => {
     if(typeQuery){
         if(genreQuery){
             list = await List.aggregate([
-                {$sample:{size:10}},
+                {$sample:{size:15}},
                 {$match: { type: typeQuery, genre: genreQuery}}
             ]);
         }else{
             list = await List.aggregate([
-                {$sample:{size:10}},
+                {$sample:{size:15}},
                 {$match: { type: typeQuery}}
             ]);   
         }
     }else{
         list = await List.aggregate([{
-            $sample:{size:10}
+            $sample:{size:15}
         }]) 
     }
         res.status(200).json(list)
