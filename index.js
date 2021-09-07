@@ -25,7 +25,9 @@ app.use("/api/users", userRoute)
 app.use("/api/movies", moviesRoute)
 app.use("/api/lists", listsRoute)
 
-app.use(express.static(path.join(__dirname, '/client/build')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('/client/build'));
+}
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
@@ -34,6 +36,8 @@ app.get('*', (req, res) => {
 
 app.use(express.json({ limit : "100mb" })); 
 app.use(express.urlencoded({ limit:"100mb", extended: false }));
+
+
 
 
 app.listen(process.env.PORT || 8800, () => {
