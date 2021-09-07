@@ -25,7 +25,7 @@ app.use("/api/movies", moviesRoute)
 app.use("/api/lists", listsRoute)
 
 app.use(express.static(path.join(__dirname, '/client/build')));
-
+app.use(favicon(__dirname + '/client/favicon.ico'));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
