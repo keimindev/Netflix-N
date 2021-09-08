@@ -25,9 +25,6 @@ app.use("/api/users", userRoute)
 app.use("/api/movies", moviesRoute)
 app.use("/api/lists", listsRoute)
 
-app.get('/', (req, res) => {
-    res.send("hello to netflix API");
-})
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 
