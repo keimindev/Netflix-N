@@ -80,9 +80,9 @@ function Register() {
 
     const submit = async (e) => {
       e.preventDefault()
-      setUsername(usernameRef.current.value);
       {
         try{
+          setUsername(usernameRef.current.value);
           await axiosInstance.post("auth/register", { email, password, username, profilePic });
           history.push("/login");
         }catch(err){
