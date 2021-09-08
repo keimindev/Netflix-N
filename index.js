@@ -7,6 +7,7 @@ const authRoute = require('./routes/auth')
 const userRoute = require('./routes/users'); 
 const moviesRoute = require('./routes/movies'); 
 const listsRoute = require('./routes/lists'); 
+const path = require('path');
 
 dotenv.config();
 
@@ -27,6 +28,13 @@ app.use("/api/lists", listsRoute)
 app.get('/', (req, res) => {
     res.send("hello to netflix API");
 })
+
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
+});
+
 
 app.use(express.json({ limit : "100mb" })); 
 app.use(express.urlencoded({ limit:"100mb", extended: false }));
