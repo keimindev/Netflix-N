@@ -146,7 +146,7 @@ function Register() {
 
                   <div className="input-username">  
                     <input type="username" placeholder="put username" ref={usernameRef} className="user-name" />
-                    { !username || uploaded === 1 ? <button type="button" className="register-btn" onClick={handleUsername}>Next</button> :
+                    { !username && uploaded === 1 ? <button type="button" className="register-btn" onClick={handleUsername}>Next</button> :
                     <button type="button" className="register-btn" onClick={submit}>Submit</button> }
                   </div>
                 </form>
