@@ -78,11 +78,14 @@ function Register() {
   
     }
 
+    const handleUsername = () =>{
+      setUsername(usernameRef.current.value);
+    }
+
     const submit = async (e) => {
       e.preventDefault()
       {
         try{
-          setUsername(usernameRef.current.value);
           await axiosInstance.post("auth/register", { email, password, username, profilePic });
           history.push("/login");
         }catch(err){
@@ -143,7 +146,8 @@ function Register() {
 
                   <div className="input-username">  
                     <input type="username" placeholder="put username" ref={usernameRef} className="user-name" />
-                    <button type="button" className="register-btn" onClick={submit}>Submit</button>
+                    { !username && uploaded === 1 ? <button type="button" className="register-btn" onClick={handleUsername}>Next</button> :
+                    <button type="button" className="register-btn" onClick={submit}>Submit</button> }
                   </div>
                 </form>
                 </>
